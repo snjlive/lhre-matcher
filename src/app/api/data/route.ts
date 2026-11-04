@@ -31,11 +31,8 @@ async function read(table:string,fields:string[],cap:number,opts:Query={}):Promi
  }while(offset&&rows.length<cap);
  return rows;
 }
-export async function GET(req:globalThis.Request){
- // Both Vercel SSO and this API header gate must pass before records are served.
- const pass=process.env.MATCHER_ACCESS_PASSWORD;
- if(!pass)return NextResponse.json({error:'MATCHER_ACCESS_PASSWORD is not configured'},{status:503});
- if(req.headers.get('x-matcher-password')!==pass)return NextResponse.json({error:'Access denied'},{status:401});
+export async function GET(){
+ // Application password removed; hosted deployments retain Vercel protection.
  if(!process.env.AIRTABLE_TOKEN)return NextResponse.json({error:'AIRTABLE_TOKEN is not configured'},{status:503});
  try{
   const aa=await read(TABLES.availability,['Name','AVAIL / UNAV','доступно с','доступно по / занято с','занято по','ОБЪЕКТ','ОБЪЕКТЫ','Created'],200);

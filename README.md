@@ -11,11 +11,11 @@ cp .env.example .env.local
 npm run dev
 ```
 
-`AIRTABLE_TOKEN`: read-only personal access token restricted to the LHRE base; `AIRTABLE_BASE_ID`: Airtable base; `MATCHER_ACCESS_PASSWORD`: required temporary access password. Missing credentials give a marked demo mode; live records are not exposed without the access password.
+`AIRTABLE_TOKEN`: read-only personal access token restricted to the LHRE base; `AIRTABLE_BASE_ID`: Airtable base. Missing Airtable credentials give a marked demo mode. The app has no separate password prompt.
 
 ## Vercel
 
-Import this GitHub repository as a Next.js project. Set all three environment variables in Vercel project settings. **Enable Vercel deployment protection or implement real authentication before sharing the preview URL**. The password header is only an interim gate, not production-grade authentication. Do not put keys in `NEXT_PUBLIC_` variables or commit `.env.local`.
+Import this GitHub repository as a Next.js project. Set both Airtable environment variables in Vercel project settings. **Enable Vercel deployment protection or implement real authentication before sharing the preview URL**. Do not put keys in `NEXT_PUBLIC_` variables or commit `.env.local`.
 
 ## Matching semantics
 
